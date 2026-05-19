@@ -12,7 +12,7 @@ app.use(express.json());  // Necessary to automatically parse JSON into JavaScri
 
 // DATABASE
 const connectDB = require("./db/connection");
-connectDB();
+connectDB;
 
 
 
