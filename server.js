@@ -9,6 +9,7 @@ const port = process.env.PORT;
 
 
 // MIDDLEWARE
+app.use(express.json());  // Necessary to automatically parse JSON into JavaScript object and place it in req.body
 
 // ROUTES
 app.get("/", (req, res)=>{
