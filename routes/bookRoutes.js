@@ -15,6 +15,13 @@ router.post("/", (req, res) => {
         })
         .catch(err => {
             console.error('Error creating book:', err);
+
+            if (err.name === "ValidationError") {
+                return res.status(400).json({
+                    message: err.message
+                });
+            }
+
             res.status(400).json({ message: "Failed to create book." });
         });
 });
@@ -66,6 +73,10 @@ router.put("/:id", async (req, res) => {
 
     } catch (error) {
         console.error("Error updating book:", error);
+
+        if (error.name === "ValidationError") {
+            return res.status(400).json(error.errors);
+        }
 
         res.status(400).json({ message: "Failed to update book." });
     }
